@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JC</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+@font-face {
+    font-family: 'RubikMonoOne-Regular';
+    src: url('fonts/RubikMonoOne-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Signika-Regular';
+    src: url('fonts/Signika-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'SigOne';
+    src: url('fonts/SigOne.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'SixtyfourConvergence-Regular';
+    src: url('fonts/SixtyfourConvergence-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'ArchivoBlack-Regular';
+    src: url('fonts/ArchivoBlack-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Barcode';
+    src: url('fonts/Barcode.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'BigShould';
+    src: url('fonts/BigShould.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Bungee';
+    src: url('fonts/Bungee.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Danfo-Regular';
+    src: url('fonts/Danfo-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'DotGothic';
+    src: url('fonts/DotGothic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'EDOTS';
+    src: url('fonts/EDOTS.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Lime';
+    src: url('fonts/Lime.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Pacifico-Regular';
+    src: url('fonts/Pacifico-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Plauy';
+    src: url('fonts/plauy.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'PoetOne';
+    src: url('fonts/PoetOne.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Rock';
+    src: url('fonts/Rock.woff2') format('woff2');
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.name {
+    font-size: 3rem;
+    color: #000;
+    margin: 0;
+    animation: changeFont 2s infinite;
+    line-height: 1.2;
+}
+
+@keyframes changeFont {
+    0% { font-family: 'RubikMonoOne-Regular', sans-serif; }
+    6.25% { font-family: 'Signika-Regular', sans-serif; }
+    12.5% { font-family: 'SigOne', sans-serif; }
+    18.75% { font-family: 'SixtyfourConvergence-Regular', sans-serif; }
+    25% { font-family: 'ArchivoBlack-Regular', sans-serif; }
+    31.25% { font-family: 'Barcode', sans-serif; }
+    37.5% { font-family: 'BigShould', sans-serif; }
+    43.75% { font-family: 'Bungee', sans-serif; }
+    50% { font-family: 'Danfo-Regular', sans-serif; }
+    56.25% { font-family: 'DotGothic', sans-serif; }
+    62.5% { font-family: 'EDOTS', sans-serif; }
+    68.75% { font-family: 'Lime', sans-serif; }
+    75% { font-family: 'Pacifico-Regular', sans-serif; }
+    81.25% { font-family: 'Plauy', sans-serif; }
+    87.5% { font-family: 'PoetOne', sans-serif; }
+    93.75% { font-family: 'Rock', sans-serif; }
+    100% { font-family: 'RubikMonoOne-Regular', sans-serif; }
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(249, 249, 249, 0.8);
+}
+.footer a {
+    color: #2a1f62;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 600px) {
+    .name {
+        font-size: 2.5rem;
+    }
+    .footer {
+        font-size: 0.7rem;
+    }
+}
+.button {
+    position: absolute;
+    left: 35px;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.home {
+    display: inline-flex;
+    padding: 12px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.home svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.home:hover,
+.home:focus {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.home:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+  </style>
+</head>
+    </style>
+</head>
+<body>
+    <h1 class="name">James Coalchi</h1>
+    <div class="button">
+        <a href="/index.html" class="home" aria-label="Go to homepage">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+        </a>
+    </div>
+    <div class="footer">
+        <p>
+            <a href="mailto:jamie@jamescoalchi.space">jamie@jamescoalchi.space</a> | 
+            <a href="https://github.com/JamesCoalchiPortfolio" target="_blank">GitHub</a>
+        </p>
+    </div>
+</body>
+</html>
