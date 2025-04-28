@@ -58,9 +58,53 @@
 			  transform: translate(-50%, -50%);
 			  transition: transform 0.1s ease-out;
 		}
+		.button {
+    position: absolute;
+    left: 35px;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.home {
+    display: inline-flex;
+    padding: 12px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.home svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.home:hover,
+.home:focus {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.home:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
     </style>
 </head>
 <body>
+	<div class="button">
+    <a href="/index.html" class="home" aria-label="Go to homepage">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-in"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+    </a>
+</div>
 	<div id="cursor" class="cursor"></div>
 	<h1 unselectable="on">Picsum</h1>
     <script>
