@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://picsum.photos/16" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <title>Picsum</title>
+    <style>
+		@media (max-width: 768px) {
+		  #cursor {
+			display: none;
+		  }
+		}
+        body {
+			
+			cursor: none;
+            margin: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            font-size: 24px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: black;
+        }
+		
+		h1 {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			font-family: "DM Serif Text", serif;
+			font-weight: 400;
+			font-style: normal;
+			font-size: 120px;
+			color: #FFB800;
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: black;
+		}
+		
+		.cursor {
+			  position: fixed;
+			  width: 50px;
+			  height: 50px;
+			  background-color: white;
+			  border-radius: 50%;
+			  mix-blend-mode: difference;
+			  pointer-events: none;
+			  transform: translate(-50%, -50%);
+			  transition: transform 0.1s ease-out;
+		}
+    </style>
+</head>
+<body>
+	<div id="cursor" class="cursor"></div>
+	<h1 unselectable="on">Picsum</h1>
+    <script>
+		const cursor = document.getElementById("cursor");
+		const imageCache = [];
+        let currentImageIndex = 0;
+        let changeBGInterval = null;
+		
+		document.addEventListener("mousemove", (e) => {
+			  cursor.style.left = `${e.clientX}px`;
+			  cursor.style.top = `${e.clientY}px`;
+		});
+		
+        function getRandomImageUrl() {
+            return `https://picsum.photos/1920/1080?random=${Date.now()}-${Math.random()}`;
+        }
+
+        function preloadImage(callback) {
+            const imageUrl = getRandomImageUrl();
+            const img = new Image();
+            img.src = imageUrl;
+
+            img.onload = () => {
+                callback(imageUrl);
+            };
+
+            img.onerror = () => {
+                console.error('Failed to preload image:', imageUrl);
+                preloadImage(callback);
+            };
+        }
+
+        function preloadImages(count) {
+            for (let i = 0; i < count; i++) {
+                preloadImage((url) => imageCache.push(url));
+            }
+        }
+
+        function changeBG() {
+            if (imageCache.length > 0) {
+                document.body.style.backgroundImage = `url('${imageCache[currentImageIndex]}')`;
+                currentImageIndex = (currentImageIndex + 1) % imageCache.length;
+
+                preloadImage((url) => {
+                    imageCache[currentImageIndex] = url;
+                });
+            }
+        }
+
+        function startRandomInterval() {
+            if (changeBGInterval) clearInterval(changeBGInterval);
+
+			const interval = Math.random() * (550 - 450) + 450;
+            changeBGInterval = setInterval(() => {
+                changeBG();
+                startRandomInterval();
+            }, interval);
+        }
+
+        const initialImagesCount = 5;
+        preloadImages(initialImagesCount);
+
+        const startIntervalWhenReady = setInterval(() => {
+            if (imageCache.length > 0) {
+                changeBG();
+                startRandomInterval();
+                clearInterval(startIntervalWhenReady);
+            }
+        }, 100);
+    </script>
+</body>
+</html>
